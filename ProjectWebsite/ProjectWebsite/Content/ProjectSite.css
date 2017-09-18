@@ -1,0 +1,13 @@
+﻿body {
+}
+
+.premiumText
+{
+    font-weight: bold;    
+    color:gold !important;
+}
+
+.panelStyle
+{
+    background-color: rgba(255,255,255,0.8);
+}

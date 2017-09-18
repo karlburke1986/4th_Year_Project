@@ -1,0 +1,120 @@
+﻿@model PagedList.IPagedList<ProjectWebsite.Models.WeatherModels.weather>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br/>
+
+<div class="panel panel-primary panelStyle col-md-12">
+    <div class="container">
+        <br/>
+        <div class="panel panel-primary panelStyle col-md-11">
+            <div class="col-md-6">
+                <div class="col-md-offset-3">
+                    <h1>Today</h1>
+                    <br />
+                    <div class="panel-body">
+                        <div class="row col-md-12">
+                            <div>
+                                Latest Temp : @Html.Raw(ViewBag.LatestTemp) &deg;C &nbsp;
+                                Recorded At : @Html.Raw(ViewBag.LatestTime)
+                            </div>
+                            <div>
+                                Highest Temp : @Html.Raw(ViewBag.HighestTemp) &deg;C &nbsp;
+                                Lowest Temp : @Html.Raw(ViewBag.LowestTemp) &deg;C
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="col-md-offset-3">
+                    <h1>Yesterday</h1>
+                    <br />
+                    <div class="panel-body">
+                        <div class="row col-md-12">                            
+                            <div>
+                                Highest Temp : @Html.Raw(ViewBag.HighestTempYes) &deg;C &nbsp;
+                                Lowest Temp : @Html.Raw(ViewBag.LowestTempYes) &deg;C
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id='myModal' class="modal fade in">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div id='myModalContent'></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container"><h1>Todays Complete Data</h1></div>
+    <div id="IndexTab" class="container">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#dataTable" data-toggle="tab">Table</a>
+            </li>
+            <li>
+                <a href="#tab2" id="#bs-tab2" data-toggle="tab">Graph</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <div class="tab-pane active" id="dataTable">
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayName("Temperature")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Humidity")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Date & Time")
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.temp)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.humidity)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.dateTime)
+                            </td>                            
+                        </tr>
+                    }
+
+                </table>
+                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+                @Html.PagedListPager(Model, page => Url.Action("Index", new {page}))
+            </div>
+
+            <div id="tab2" class="tab-pane">
+                <img src="@Url.Action("Graph")" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<script type="text/javascript">
+    $("#btnDetails").click(function () {
+        $('#DetailsPopup').appendTo('body').modal('show');
+    });
+</script>*@
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/modalform")
+    }

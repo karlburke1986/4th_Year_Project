@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="WeatherSiteITT" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^E:\\Semester_7\\Project\\ProjectWebsite\\ProjectWebsite\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^E:\\Semester_7\\Project\\ProjectWebsite\\ProjectWebsite\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+  <parameter name="ConnName-Web.config Connection String" description="" value="Server=tcp:karlsweatherdb.database.windows.net,1433;Initial Catalog=weather;Persist Security Info=False;User ID=x00115288;Password=Dublin10;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" tags="">
+    <parameterEntry kind="XmlFile" scope="E:\\Semester_7\\Project\\ProjectWebsite\\ProjectWebsite\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='ConnName']/@connectionString" />
+  </parameter>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." value="DefaultConnection_ConnectionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="E:\\Semester_7\\Project\\ProjectWebsite\\ProjectWebsite\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+</parameters>

@@ -1,0 +1,30 @@
+﻿@model ProjectWebsite.Models.Status
+@{
+    ViewBag.Title = "Chart";
+}
+
+<h3>@ViewBag.Message</h3>
+
+<div class="panel">
+    <div class="panel-heading">
+
+    </div>
+    <div class="panel-body">
+        <form class="form-horizontal container" role="form">
+
+            <div class="form-column col-lg-12 col-md-12 col-sm-12">
+
+                <div class="col-12 dashboard">
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div id="IssueStatus" class="chart small"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script src="~/Scripts/canvasjs.min.js"></script>
